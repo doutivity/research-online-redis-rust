@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  app:
+    container_name: "research-online-redis-rust-app"
+    image: rust:1-alpine
+    command: "sleep 1d"
+    depends_on:
+      - redis1
+      - keydb1
+      - dragonflydb1
+
+  redis1:
+    container_name: "research-online-redis-1"
+    image: "redis:latest"
+
+  keydb1:
+    container_name: "research-online-keydb-1"
+    image: "eqalpha/keydb:latest"
+
+  dragonflydb1:
+    container_name: "research-online-dragonflydb-1"
+    image: "docker.dragonflydb.io/dragonflydb/dragonfly"
